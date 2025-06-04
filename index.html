@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yapay zeka destekli bilgi kartı oluşturucu">
+  <title>Bilgi Kartı Oluşturucu | AI Destekli Öğrenme Aracı</title>
+  
   <script type="importmap">
   {
     "imports": {
@@ -10,21 +13,40 @@
     }
   }
   </script>
-  <!-- Add Google Fonts Link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
   <div class="container">
-    <h1>Bilgi Kartı Oluşturucu</h1>
-    <textarea
-      id="topicInput"
-      placeholder="Bir konu girin (örn: Yapay Zeka) veya 'Terim: Tanım' çiftleri (her satıra bir tane)"
-    ></textarea>
-    <button id="generateButton">Bilgi Kartı Oluştur</button>
-    <div id="errorMessage" class="error-message"></div>
-    <div id="flashcardsContainer" class="flashcards-container">
-    </div>
+    <header class="app-header">
+      <h1>Bilgi Kartı Oluşturucu</h1>
+      <p class="subtitle">Yapay zeka destekli öğrenme aracı</p>
+    </header>
+    
+    <main class="app-main">
+      <div class="input-section">
+        <textarea
+          id="topicInput"
+          placeholder="Bir konu girin (örn: Yapay Zeka) veya 'Terim: Tanım' çiftleri (her satıra bir tane)"
+          aria-label="Konu girişi"
+        ></textarea>
+        <div class="button-container">
+          <button id="generateButton" class="primary-button">
+            <span class="button-text">Bilgi Kartı Oluştur</span>
+          </button>
+        </div>
+      </div>
+      
+      <div id="errorMessage" class="error-message" role="alert" aria-live="polite"></div>
+      <div id="flashcardsContainer" class="flashcards-container"></div>
+    </main>
+    
+    <footer class="app-footer">
+      <p>&copy; 2025 Bilgi Kartı Oluşturucu. Tüm hakları saklıdır.</p>
+    </footer>
   </div>
-<link rel="stylesheet" href="index.css">
-<script src="index.tsx" type="module"></script>
+  <script src="index.tsx" type="module"></script>
+</body>
+</html>
