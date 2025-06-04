@@ -1,153 +1,180 @@
-:root {
-  --light-bg: #f8f9fa; /* Lighter grey for light mode */
-  --dark-bg: #202124;  /* Google dark grey */
-  --light-surface: #ffffff;
-  --dark-surface: #2d2e30; /* Slightly lighter dark surface */
-  --light-text-primary: #202124;
-  --dark-text-primary: #e8eaed; /* Google dark mode text */
-  --light-text-secondary: #5f6368;
-  --dark-text-secondary: #bdc1c6; /* Google dark mode secondary text */
-  --light-primary: #1a73e8; /* Google Blue */
-  --dark-primary: #8ab4f8; /* Lighter Google Blue for dark mode */
-  --light-primary-hover: #185abc;
-  --dark-primary-hover: #aecbfa;
-  --light-border: #dadce0;
-  --dark-border: #5f6368;
-  --light-error: #d93025;
-  --dark-error: #f28b82;
-  --light-card-bg: #e8f0fe; /* Light blue background for cards */
-  --dark-card-bg: #3c4043; /* Darker grey for cards */
-  --light-disabled-bg: #e0e0e0;
-  --dark-disabled-bg: #3c4043;
-  --light-disabled-text: #a0a0a0;
-  --dark-disabled-text: #7f8184;
-  --light-shadow-color-1: rgba(60, 64, 67, 0.15);
-  --dark-shadow-color-1: rgba(0, 0, 0, 0.3);
-  --light-shadow-color-2: rgba(60, 64, 67, 0.1);
-  --dark-shadow-color-2: rgba(0, 0, 0, 0.2);
-   --light-focus-shadow-color: rgba(26, 115, 232, 0.2);
-  --dark-focus-shadow-color: rgba(138, 180, 248, 0.3);
-  --light-button-focus-shadow-color: rgba(26, 115, 232, 0.3);
-  --dark-button-focus-shadow-color: rgba(138, 180, 248, 0.4);
-  --light-button-text: white;
-  --dark-button-text: var(--dark-bg); /* Use dark background for text on light blue */
-  --flashcard-width: 220px;
-  --flashcard-height: 150px; /* Make height consistent */
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-body {
-  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+* {
   margin: 0;
-  background-color: light-dark(var(--light-bg), var(--dark-bg));
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #7F5AF0;
+  --primary-hover: #6B47D7;
+  --bg: #16161A;
+  --surface: #242629;
+  --button: #7F5AF0;
+  --headline: #FFFFFE;
+  --text: #94A1B2;
+  --stroke: #010101;
+  --highlight: #7F5AF0;
+  --secondary: #72757E;
+  --tertiary: #2CB67D;
+  --surface-light: #ffffff;
+  --surface-dark: #1e1e1e;
+  --text-light: #1f2937;
+  --text-dark: #e5e7eb;
+  --accent-light: #3b82f6;
+  --accent-dark: #60a5fa;
+  --error-light: #ef4444;
+  --error-dark: #f87171;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-800: #1f2937;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ana konteyner stilleri */
 .container {
-  background-color: light-dark(var(--light-surface), var(--dark-surface));
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1)),
-              0 4px 8px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
-  width: 90%;
-  max-width: 800px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  background: var(--surface-light);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Başlık stilleri */
+.app-header {
   text-align: center;
-  margin-top: 20px;
+  margin-bottom: 3rem;
 }
 
 h1 {
-  color: light-dark(var(--light-primary), var(--dark-primary));
-  margin-bottom: 15px;
-  font-size: 2em;
-  font-weight: 500;
+  color: var(--headline);
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
-p {
-  margin-bottom: 25px;
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
-  line-height: 1.6;
+.subtitle {
+  color: var(--text);
+  font-size: 1.1rem;
 }
 
-textarea {
-  width: calc(100% - 22px);
-  padding: 15px;
-  margin-bottom: 25px;
-  border: 1px solid light-dark(var(--light-border), var(--dark-border));
-  border-radius: 8px;
-  font-size: 16px;
-  min-height: 120px;
-  background-color: light-dark(var(--light-bg), var(--dark-card-bg)); /* Use darker card bg for dark text area */
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+/* Giriş alanı stilleri */
+.input-section {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#topicInput {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
   resize: vertical;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  min-height: 120px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-textarea:focus {
+#topicInput:focus {
   outline: none;
-  border-color: light-dark(var(--light-primary), var(--dark-primary));
-  box-shadow: 0 0 0 2px light-dark(var(--light-focus-shadow-color), var(--dark-focus-shadow-color));
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
 }
 
-button {
-  background-color: light-dark(var(--light-primary), var(--dark-primary));
-  color: light-dark(var(--light-button-text), var(--dark-button-text));
-  padding: 14px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s ease, box-shadow 0.2s ease;
-  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
-}
-
-button:hover {
-  background-color: light-dark(var(--light-primary-hover), var(--dark-primary-hover));
-  box-shadow: 0 1px 3px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
-}
-
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px light-dark(var(--light-button-focus-shadow-color), var(--dark-button-focus-shadow-color));
-}
-
-button:disabled {
-  background-color: light-dark(var(--light-disabled-bg), var(--dark-disabled-bg));
-  color: light-dark(var(--light-disabled-text), var(--dark-disabled-text));
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.error-message {
-  color: light-dark(var(--light-error), var(--dark-error));
-  margin-top: 20px;
-  font-weight: 500;
-  min-height: 1.5em;
-}
-
-.flashcards-container {
+/* Buton stilleri */
+.button-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
-  justify-content: center;
-  perspective: 1000px; /* Add perspective for 3D effect */
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
 }
 
-.flashcard {
-  background-color: transparent; /* Make the outer container transparent */
-  width: var(--flashcard-width);
-  height: var(--flashcard-height);
-  border: none; /* Remove border from outer container */
-  border-radius: 10px;
+.primary-button {
+  background: var(--button);
+  color: var(--headline);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  perspective: 1000px; /* Add perspective for 3D effect */
-  box-shadow: none; /* Remove shadow from outer container */
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.primary-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.secondary-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--stroke);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: var(--surface);
+  border-color: var(--primary);
+  color: var(--headline);
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Flash kart container stilleri */
+.flashcards-container {
+  margin-top: 3rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Flash kart stilleri */
+.flashcard {
+  perspective: 1000px;
+  height: 220px;
 }
 
 .flashcard-inner {
@@ -155,10 +182,13 @@ button:disabled {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2)); /* Apply shadow here */
-  border-radius: 10px; /* Apply border-radius here */
+  cursor: pointer;
+}
+
+.flashcard:hover .flashcard-inner {
+  transform: translateY(-5px);
 }
 
 .flashcard.flipped .flashcard-inner {
@@ -170,49 +200,139 @@ button:disabled {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  border-radius: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Reduced padding for content */
-  box-sizing: border-box;
-  border-radius: 10px; /* Match parent */
-  border: 1px solid light-dark(var(--light-border), var(--dark-border)); /* Apply border here */
-  background-color: light-dark(var(--light-card-bg), var(--dark-card-bg)); /* Apply background here */
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .flashcard-back {
   transform: rotateY(180deg);
+  background: var(--bg);
 }
-
-.flashcard:hover .flashcard-inner {
-  box-shadow: 0 4px 8px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
-}
-
-.flashcard:hover .flashcard-front,
-.flashcard:hover .flashcard-back {
-   border-color: light-dark(var(--light-primary), var(--dark-primary));
-}
-
 
 .term {
-  font-size: 1.3em; /* Adjust size */
-  font-weight: 500;
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  color: var(--headline);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .definition {
-  font-size: 1.0em; /* Adjust size */
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
-  line-height: 1.4; /* Adjust line height */
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid light-dark(var(--light-border), var(--dark-border));
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
-  font-size: 0.9em;
+.category-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  background: var(--primary);
+  color: var(--headline);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* İlerleme çubuğu stilleri */
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: var(--surface);
+  border-radius: 2px;
+  margin: 2rem 0 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--tertiary);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Hata mesajı stilleri */
+.error-message {
+  background: rgba(255, 86, 86, 0.1);
+  color: #FF5656;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flashcard {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+/* Medya sorguları */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .input-section {
+    padding: 1.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .button-container {
+    width: 100%;
+  }
+
+  .secondary-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .secondary-button {
+    width: 100%;
+  }
 }
