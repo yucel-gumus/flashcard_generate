@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+    }
+  }
+  </script>
+  <!-- Add Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <div class="container">
+    <h1>Bilgi Kartı Oluşturucu</h1>
+    <textarea
+      id="topicInput"
+      placeholder="Bir konu girin (örn: Yapay Zeka) veya 'Terim: Tanım' çiftleri (her satıra bir tane)"
+    ></textarea>
+    <button id="generateButton">Bilgi Kartı Oluştur</button>
+    <div id="errorMessage" class="error-message"></div>
+    <div id="flashcardsContainer" class="flashcards-container">
+    </div>
+  </div>
+<link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
