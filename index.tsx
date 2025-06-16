@@ -139,12 +139,6 @@ const createCardElement = (flashcard: Flashcard, index: number): HTMLDivElement 
   const frontInstruction = createInstructionElement('Cevabı görmek için tıklayın');
 
   cardFront.appendChild(termDiv);
-  if (flashcard.category) {
-    const categoryBadge = document.createElement('span');
-    categoryBadge.classList.add('category-badge');
-    categoryBadge.textContent = flashcard.category;
-    cardFront.appendChild(categoryBadge);
-  }
   cardFront.appendChild(frontInstruction);
 
   // Arka yüz
