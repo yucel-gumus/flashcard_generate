@@ -125,9 +125,40 @@ h1 {
   min-width: 200px;
 }
 
-.primary-button:hover {
+.primary-button:hover:not(:disabled) {
   background: var(--primary-hover);
   transform: translateY(-2px);
+}
+
+.primary-button:disabled {
+  background: var(--secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.primary-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.primary-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--headline);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .secondary-buttons {
@@ -241,6 +272,27 @@ h1 {
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.02em;
+}
+
+.card-instruction {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  text-align: center;
+  font-style: italic;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.flashcard:hover .card-instruction {
+  opacity: 0.9;
 }
 
 /* İlerleme çubuğu stilleri */

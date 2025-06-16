@@ -1,126 +1,178 @@
-# Bilgi Kartı Oluşturucu
+# 🎯 Bilgi Kartı Oluşturucu
 
-Bu proje, Gemini AI API'sini kullanarak herhangi bir konu hakkında otomatik olarak bilgi kartları oluşturan bir web uygulamasıdır.
+Modern ve kullanıcı dostu bir AI destekli bilgi kartı oluşturucu. Google Gemini API kullanarak herhangi bir konu hakkında otomatik olarak etkileşimli bilgi kartları oluşturur.
 
-## Özellikler
+## ✨ Özellikler
 
-- 🤖 Gemini AI API entegrasyonu
-- 📝 Herhangi bir konu için otomatik bilgi kartı oluşturma
-- 🔄 İnteraktif kart çevirme animasyonu
-- 💡 Kolay kullanıcı arayüzü
-- 🌙 Modern ve responsive tasarım
-- 🇹🇷 Tam Türkçe dil desteği
+- 🤖 **Gemini AI Entegrasyonu** - Google'ın en gelişmiş AI modeli
+- 📚 **Otomatik Kart Oluşturma** - Herhangi bir konu için anında kartlar
+- 🔄 **İnteraktif Animasyonlar** - Smooth kart çevirme efektleri
+- 🎯 **Kullanıcı Dostu Arayüz** - Sezgisel ve modern tasarım
+- 📱 **Responsive Tasarım** - Tüm cihazlarda mükemmel görünüm
+- 🔀 **Kart Karıştırma** - Rastgele sıralama özelliği
+- 💾 **JSON Export** - Kartları kaydetme ve paylaşma
+- ⌨️ **Klavye Kısayolları** - Ctrl+Enter ile hızlı oluşturma
+- 🎵 **Ses Efektleri** - Kart çevirme sesleri
+- 📊 **İlerleme Takibi** - Hangi kartlarda olduğunuzu görün
+- 🇹🇷 **Tam Türkçe Destek** - Yerel dil desteği
 
-## Teknolojiler
+## 🚀 Teknolojiler
 
-- TypeScript
-- Vite
-- Google Gemini AI API
-- CSS3 Animations
-- HTML5
+- **Frontend**: TypeScript, HTML5, CSS3
+- **Build Tool**: Vite
+- **AI API**: Google Gemini 2.0 Flash
+- **Styling**: Modern CSS with animations
+- **Architecture**: Modular TypeScript
 
-## Kurulum
+## 📦 Kurulum
 
 ### Gereksinimler
 
-- Node.js (v14 veya üzeri)
-- NPM (Node Package Manager)
-- Gemini API Anahtarı
+- Node.js (v18+)
+- NPM (v8+)
+- Google Gemini API Anahtarı
 
-### Lokal Geliştirme Ortamı
+### Hızlı Başlangıç
 
-1. Projeyi klonlayın:
-   ```bash
-   git clone [repo-url]
-   cd flashcard-maker
-   ```
+```bash
+# Projeyi klonlayın
+git clone <repo-url>
+cd flashcard-generator
 
-2. Bağımlılıkları yükleyin:
-   ```bash
-   npm install
-   ```
+# Bağımlılıkları yükleyin
+npm install
 
-3. `.env.local` dosyası oluşturun ve Gemini API anahtarınızı ekleyin:
-   ```bash
-   GEMINI_API_KEY=your_api_key_here
-   ```
+# Ortam değişkenlerini ayarlayın
+echo "GEMINI_API_KEY=your_api_key_here" > .env.local
 
-4. Uygulamayı başlatın:
-   ```bash
-   npm run dev
-   ```
+# Geliştirme sunucusunu başlatın
+npm run dev
+```
 
-5. Tarayıcınızda açın:
-   ```
-   http://localhost:5173
-   ```
+### API Anahtarı Alma
 
-## Kullanım
+1. [Google AI Studio](https://makersuite.google.com/app/apikey)'ya gidin
+2. Yeni API anahtarı oluşturun
+3. `.env.local` dosyasına ekleyin
 
-1. Uygulama arayüzünde metin alanına bir konu girin (örn: "Yapay Zeka") veya manuel olarak terim-tanım çiftleri ekleyin
+## 🎮 Kullanım
+
+### Temel Kullanım
+1. Metin alanına bir konu girin (örn: "Yapay Zeka")
 2. "Bilgi Kartı Oluştur" butonuna tıklayın
-3. Oluşturulan kartları görmek için bekleyin
-4. Kartların üzerine tıklayarak ön ve arka yüzlerini görebilirsiniz
+3. Kartlara tıklayarak cevapları görün
 
-## Proje Yapısı
+### Klavye Kısayolları
+- `Ctrl + Enter`: Kart oluştur
+- `Tıklama`: Kartı çevir
 
-- `index.html`: Ana HTML dosyası ve uygulama giriş noktası
-- `index.tsx`: TypeScript ana uygulama kodu
-- `index.css`: Stil tanımlamaları ve animasyonlar
-- `vite.config.ts`: Vite yapılandırması
-- `tsconfig.json`: TypeScript yapılandırması
-- `.env.local`: Ortam değişkenleri (API anahtarı)
+### Gelişmiş Özellikler
+- **Karıştır**: Kartları rastgele sıralar
+- **Kaydet**: JSON formatında indir
+- **İlerleme**: Hangi kartta olduğunuzu takip edin
 
-## Build ve Dağıtım
+## 🏗️ Proje Yapısı
 
-### Yerel Build
+```
+flashcard-generator/
+├── index.html          # Ana HTML dosyası
+├── index.tsx           # TypeScript ana kod
+├── index.css           # Stil tanımlamaları
+├── package.json        # Proje yapılandırması
+├── tsconfig.json       # TypeScript ayarları
+├── vite.config.ts      # Vite yapılandırması
+└── .env.local          # Ortam değişkenleri
+```
 
-Projeyi production için derlemek için:
+## 🔧 Geliştirme
+
+### Mevcut Komutlar
+
+```bash
+npm run dev          # Geliştirme sunucusu
+npm run build        # Production build
+npm run preview      # Build önizleme
+npm run type-check   # TypeScript kontrolü
+npm run clean        # Build dosyalarını temizle
+```
+
+### Kod Kalitesi
+
+- **TypeScript**: Tip güvenliği
+- **Modüler Yapı**: Temiz ve sürdürülebilir kod
+- **Error Handling**: Kapsamlı hata yönetimi
+- **Performance**: Optimize edilmiş performans
+
+## 🚀 Deployment
+
+### Vercel (Önerilen)
+
+```bash
+# Vercel CLI ile
+npm i -g vercel
+vercel
+
+# Veya GitHub entegrasyonu ile
+# 1. GitHub'a push edin
+# 2. Vercel'de import edin
+# 3. GEMINI_API_KEY environment variable ekleyin
+```
+
+### Netlify
+
+```bash
+# Build komutu: npm run build
+# Publish directory: dist
+# Environment variables: GEMINI_API_KEY
+```
+
+### Manuel Deployment
 
 ```bash
 npm run build
+# dist/ klasörünü web sunucunuza yükleyin
 ```
 
-Bu komut `dist` klasöründe optimize edilmiş dosyalar oluşturacaktır.
+## 🔒 Güvenlik
 
-### Vercel Deployment
+- ✅ API anahtarları environment variables'da
+- ✅ `.env.local` gitignore'da
+- ✅ Client-side validation
+- ✅ Error boundary implementation
 
-1. GitHub'a projenizi push edin
-2. [Vercel](https://vercel.com)'de hesap oluşturun
-3. "New Project" butonuna tıklayın
-4. GitHub reponuzu seçin
-5. Framework Preset olarak "Vite" seçin
-6. Environment Variables bölümünde:
-   - NAME: `GEMINI_API_KEY`
-   - VALUE: Gemini API anahtarınız
-7. "Deploy" butonuna tıklayın
+## 🤝 Katkıda Bulunma
 
-Vercel otomatik olarak:
-- Her push'ta yeni versiyonu deploy edecek
-- HTTPS ve CDN desteği sağlayacak
-- Automatic Branch Deployments yapacak
-- Deploy Preview özelliği sunacak
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit edin (`git commit -m 'feat: Add amazing feature'`)
+4. Push edin (`git push origin feature/amazing-feature`)
+5. Pull Request oluşturun
 
-### Production URL'i
+### Commit Kuralları
 
-Deploy tamamlandıktan sonra Vercel size bir production URL'i verecek:
-```
-https://your-project-name.vercel.app
-```
+- `feat:` - Yeni özellik
+- `fix:` - Bug düzeltme
+- `docs:` - Dokümantasyon
+- `style:` - Kod formatı
+- `refactor:` - Kod yeniden düzenleme
+- `test:` - Test ekleme
+- `chore:` - Bakım işleri
 
-## Güvenlik
+## 📄 Lisans
 
-- API anahtarınızı güvende tutun ve `.env.local` dosyasını asla paylaşmayın
-- `.gitignore` dosyasında `.env.local` dosyasının hariç tutulduğundan emin olun
+Bu proje Apache 2.0 lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-## Lisans
+## 🙏 Teşekkürler
 
-Bu proje Apache 2.0 lisansı altında lisanslanmıştır.
+- Google Gemini AI ekibine
+- Vite geliştirici topluluğuna
+- TypeScript ekibine
 
-## Katkıda Bulunma
+## 📞 İletişim
 
-1. Bu depoyu fork edin
-2. Feature branch'i oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: Add some amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Bir Pull Request oluşturun
+- GitHub Issues: Bug raporları ve özellik istekleri
+- Email: [your-email@example.com]
+
+---
+
+⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
