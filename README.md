@@ -1,185 +1,124 @@
-# 🎯 Bilgi Kartı Oluşturucu
+# 🎯 Flashcard Generator (Bilgi Kartı Oluşturucu)
 
-Modern ve kullanıcı dostu bir AI destekli bilgi kartı oluşturucu. Google Gemini API kullanarak herhangi bir konu hakkında otomatik olarak etkileşimli bilgi kartları oluşturur.
+Modern, hızlı ve kullanıcı dostu bir AI destekli bilgi kartı oluşturucu. Google Gemini 2.0 Flash modelini kullanarak, herhangi bir konu hakkında saniyeler içinde eğitici ve öğretici bilgi kartları üretir.
+
+![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)
+![React](https://img.shields.io/badge/React-19.0+-61DAFB.svg)
+![Vite](https://img.shields.io/badge/Vite-6.0+-646CFF.svg)
 
 ## ✨ Özellikler
 
-- 🤖 **Gemini AI Entegrasyonu** - Google'ın en gelişmiş AI modeli
-- 📚 **Otomatik Kart Oluşturma** - Herhangi bir konu için anında kartlar
-- 🔄 **İnteraktif Animasyonlar** - Smooth kart çevirme efektleri
-- 🎯 **Kullanıcı Dostu Arayüz** - Sezgisel ve modern tasarım
-- 📱 **Responsive Tasarım** - Tüm cihazlarda mükemmel görünüm
-- 🔀 **Kart Karıştırma** - Rastgele sıralama özelliği
-- 💾 **JSON Export** - Kartları kaydetme ve paylaşma
-- ⌨️ **Klavye Kısayolları** - Ctrl+Enter ile hızlı oluşturma
-- 🎵 **Ses Efektleri** - Kart çevirme sesleri
-- 📊 **İlerleme Takibi** - Hangi kartlarda olduğunuzu görün
-- 🇹🇷 **Tam Türkçe Destek** - Yerel dil desteği
+- 🤖 **Gemini AI Entegrasyonu**: Google'ın en yeni ve en hızlı AI modeli (Gemini 2.0 Flash) ile güçlendirilmiştir.
+- ⚡ **Anında Oluşturma**: Sadece konu başlığı girerek saniyeler içinde setler oluşturun.
+- 🎨 **Modern UI/UX**: Glassmorphism etkileri, akıcı animasyonlar ve responsive tasarım.
+- 📱 **Mobil Uyumlu**: Tüm cihazlarda (masaüstü, tablet, telefon) kusursuz deneyim.
+- 🔄 **İnteraktif Kartlar**: 3D çevirme efektleri ve sesli geri bildirimler.
+- 💾 **Dışa Aktarma**: Kart setlerinizi JSON formatında kaydedin ve paylaşın.
+- ⌨️ **Klavye Kısayolları**: Verimlilik için optimize edilmiş kontroller.
+- 🇹🇷 **Türkçe Odaklı**: Türkçe içerik üretimi için özel optimize edilmiştir.
 
 ## 🚀 Teknolojiler
 
-- **Frontend**: TypeScript, HTML5, CSS3
+Bu proje, modern web geliştirme standartlarına uygun olarak geliştirilmiştir:
+
+- **Frontend Framework**: React 19
+- **Dil**: TypeScript
 - **Build Tool**: Vite
-- **AI API**: Google Gemini 2.0 Flash
-- **Styling**: Modern CSS with animations
-- **Architecture**: Modular TypeScript
+- **Styling**: Modern CSS3 (Variables, Flexbox/Grid, Animations)
+- **State Management**: React Hooks (Custom Hooks)
+- **Mimari**: Feature-based Modular Architecture
 
-## 📦 Kurulum
+## 📦 Kurulum ve Çalıştırma
 
-### Gereksinimler
+Bu proje, bir backend servisi ile birlikte çalışacak şekilde tasarlanmıştır.
 
-- Node.js (v18+)
-- NPM (v8+)
-- Google Gemini API Anahtarı
+### Ön Gereksinimler
 
-### Hızlı Başlangıç
+- Node.js (v18 veya üzeri)
+- NPM veya Yarn
+- [Flashcard Backend](https://github.com/yucel-gumus/llm_api) servisi (veya uyumlu bir API)
+
+### 1. Projeyi Klonlayın
 
 ```bash
-# Projeyi klonlayın
-git clone <repo-url>
-cd flashcard-generator
+git clone https://github.com/yucel-gumus/flashcard-generate.git
+cd flashcard-generate
+```
 
-# Bağımlılıkları yükleyin
+### 2. Bağımlılıkları Yükleyin
+
+```bash
 npm install
+```
 
-# Ortam değişkenlerini ayarlayın
-echo "VITE_API_URL=http://localhost:8000/api/generate" > .env
+### 3. Çevre Değişkenlerini Ayarlayın
 
-# Geliştirme sunucusunu başlatın
+Proje kök dizininde `.env` dosyası oluşturun (veya `.env.local`) ve backend adresinizi tanımlayın:
+
+```env
+# Backend API adresiniz (Varsayılan olarak localhost:8000 kabul edilir)
+VITE_API_URL=http://localhost:8000/api/generate
+```
+
+> **Not:** Backend servisi, Google Gemini API anahtarını yönetir. Frontend tarafında API anahtarı **saklanmaz**.
+
+### 4. Geliştirme Sunucusunu Başlatın
+
+```bash
 npm run dev
 ```
 
-### Backend Kurulumu
-
-Bu proje bir backend servisine ihtiyaç duyar. Backend kodlarını [buradan](https://github.com/yucel-gumus/llm_api) indirip çalıştırabilirsiniz.
-
-1. Backend projesini çalıştırın (Port 8000)
-2. Frontend `.env` dosyasında `VITE_API_URL` ayarını yapın
-
-### API Anahtarı Alma
-
-1. [Google AI Studio](https://makersuite.google.com/app/apikey)'ya gidin
-2. Yeni API anahtarı oluşturun
-3. `.env.local` dosyasına ekleyin
-
-## 🎮 Kullanım
-
-### Temel Kullanım
-1. Metin alanına bir konu girin (örn: "Yapay Zeka")
-2. "Bilgi Kartı Oluştur" butonuna tıklayın
-3. Kartlara tıklayarak cevapları görün
-
-### Klavye Kısayolları
-- `Ctrl + Enter`: Kart oluştur
-- `Tıklama`: Kartı çevir
-
-### Gelişmiş Özellikler
-- **Karıştır**: Kartları rastgele sıralar
-- **Kaydet**: JSON formatında indir
-- **İlerleme**: Hangi kartta olduğunuzu takip edin
+Tarayıcınızda `http://localhost:5173` adresine giderek uygulamayı kullanmaya başlayabilirsiniz.
 
 ## 🏗️ Proje Yapısı
 
+Proje, okunabilirliği ve bakımı kolaylaştırmak için modüler bir yapıda düzenlenmiştir:
+
 ```
-flashcard-generator/
-├── index.html          # Ana HTML dosyası
-├── index.tsx           # TypeScript ana kod
-├── index.css           # Stil tanımlamaları
-├── package.json        # Proje yapılandırması
-├── tsconfig.json       # TypeScript ayarları
-├── vite.config.ts      # Vite yapılandırması
-└── .env.local          # Ortam değişkenleri
-```
-
-## 🔧 Geliştirme
-
-### Mevcut Komutlar
-
-```bash
-npm run dev          # Geliştirme sunucusu
-npm run build        # Production build
-npm run preview      # Build önizleme
-npm run type-check   # TypeScript kontrolü
-npm run clean        # Build dosyalarını temizle
+flashcard-generate/
+├── src/
+│   ├── components/      # UI bileşenleri (Card, Input, Button vb.)
+│   ├── services/        # API entegrasyon servisleri
+│   ├── hooks/           # Custom React hook'ları
+│   ├── types/           # TypeScript tip tanımları
+│   ├── utils/           # Yardımcı fonksiyonlar
+│   ├── styles/          # Global stiller ve temalar
+│   ├── constants/       # Sabitler ve konfigürasyonlar
+│   ├── App.tsx          # Ana uygulama bileşeni
+│   └── main.tsx         # Giriş noktası
+├── public/              # Statik dosyalar
+├── .env                 # Ortam değişkenleri
+└── package.json         # Proje bağımlılıkları
 ```
 
-### Kod Kalitesi
+## 🎮 Kullanım Kılavuzu
 
-- **TypeScript**: Tip güvenliği
-- **Modüler Yapı**: Temiz ve sürdürülebilir kod
-- **Error Handling**: Kapsamlı hata yönetimi
-- **Performance**: Optimize edilmiş performans
-
-## 🚀 Deployment
-
-### Vercel (Önerilen)
-
-```bash
-# Vercel CLI ile
-npm i -g vercel
-vercel
-
-# Veya GitHub entegrasyonu ile
-# 1. GitHub'a push edin
-# 2. Vercel'de import edin
-# 3. GEMINI_API_KEY environment variable ekleyin
-```
-
-### Netlify
-
-```bash
-# Build komutu: npm run build
-# Publish directory: dist
-# Environment variables: GEMINI_API_KEY
-```
-
-### Manuel Deployment
-
-```bash
-npm run build
-# dist/ klasörünü web sunucunuza yükleyin
-```
-
-## 🔒 Güvenlik
-
-- ✅ API anahtarları environment variables'da
-- ✅ `.env.local` gitignore'da
-- ✅ Client-side validation
-- ✅ Error boundary implementation
+1. **Konu Seçimi**: Arama çubuğuna öğrenmek istediğiniz konuyu yazın (örn: "Python Döngüler", "İstanbul Tarihi").
+2. **Oluşturma**: `Enter` tuşuna basın veya "Oluştur" butonuna tıklayın.
+3. **Öğrenme**:
+   - Kartın üzerine tıklayarak (veya `Boşluk` tuşu) ön/arka yüzü çevirin.
+   - Ok tuşları veya butonlar ile kartlar arasında geçiş yapın.
+4. **Yönetim**:
+   - "Karıştır" ile sırayı değiştirin.
+   - "İndir" ile seti cihazınıza kaydedin.
 
 ## 🤝 Katkıda Bulunma
 
-1. Fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Commit edin (`git commit -m 'feat: Add amazing feature'`)
-4. Push edin (`git push origin feature/amazing-feature`)
-5. Pull Request oluşturun
+Katkılarınızı bekliyoruz! Lütfen şu adımları izleyin:
 
-### Commit Kuralları
-
-- `feat:` - Yeni özellik
-- `fix:` - Bug düzeltme
-- `docs:` - Dokümantasyon
-- `style:` - Kod formatı
-- `refactor:` - Kod yeniden düzenleme
-- `test:` - Test ekleme
-- `chore:` - Bakım işleri
+1. Bu depoyu Fork'layın.
+2. Yeni bir özellik dalı oluşturun (`git checkout -b feature/yeni-ozellik`).
+3. Değişikliklerinizi commit edin (`git commit -m 'feat: Yeni özellik eklendi'`).
+4. Dalınızı Push edin (`git push origin feature/yeni-ozellik`).
+5. Bir Pull Request oluşturun.
 
 ## 📄 Lisans
 
-Bu proje Apache 2.0 lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+Bu proje [Apache 2.0](LICENSE) lisansı altında lisanslanmıştır.
 
 ## 🙏 Teşekkürler
 
-- Google Gemini AI ekibine
-- Vite geliştirici topluluğuna
-- TypeScript ekibine
-
-## 📞 İletişim
-
-- GitHub Issues: Bug raporları ve özellik istekleri
-- Email: [your-email@example.com]
-
----
-
-⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
+- **Google AI**: Gemini API desteği için.
+- **Open Source**: React, Vite ve TypeScript topluluklarına.
+- **Yücel Gümüş**: Proje geliştiricisi.
