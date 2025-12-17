@@ -1,0 +1,66 @@
+/* CSS Değişkenleri (Design Tokens) */
+
+:root {
+    /* Primary Colors */
+    --primary: #7F5AF0;
+    --primary-hover: #6B47D7;
+
+    /* Background Colors */
+    --bg: #16161A;
+    --surface: #242629;
+    --surface-light: #ffffff;
+    --surface-dark: #1e1e1e;
+
+    /* Button Colors */
+    --button: #7F5AF0;
+
+    /* Text Colors */
+    --headline: #FFFFFE;
+    --text: #94A1B2;
+    --text-light: #1f2937;
+    --text-dark: #e5e7eb;
+
+    /* Border Colors */
+    --stroke: #010101;
+
+    /* Accent Colors */
+    --highlight: #7F5AF0;
+    --secondary: #72757E;
+    --tertiary: #2CB67D;
+    --accent-light: #3b82f6;
+    --accent-dark: #60a5fa;
+
+    /* Error Colors */
+    --error-light: #ef4444;
+    --error-dark: #f87171;
+
+    /* Gray Scale */
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-800: #1f2937;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}

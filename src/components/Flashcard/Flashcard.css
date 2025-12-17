@@ -1,0 +1,134 @@
+/* Flashcard Bileşeni Stilleri */
+
+.flashcard {
+    perspective: 1000px;
+    height: 250px;
+    animation: flashcard-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes flashcard-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flashcard__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Flip durumu - en önemli kısım */
+.flashcard--flipped .flashcard__inner {
+    transform: rotateY(180deg);
+}
+
+/* Hover efekti - sadece çevrilmemişken */
+.flashcard:not(.flashcard--flipped):hover .flashcard__inner {
+    box-shadow: 0 12px 24px rgba(127, 90, 240, 0.3);
+}
+
+.flashcard__front,
+.flashcard__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Ön yüz - gradient arka plan */
+.flashcard__front {
+    background: linear-gradient(145deg, #2a2a3e 0%, #1a1a2e 100%);
+    border: 1px solid rgba(127, 90, 240, 0.3);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Arka yüz */
+.flashcard__back {
+    background: linear-gradient(145deg, #1e3a5f 0%, #0d1f36 100%);
+    border: 1px solid rgba(44, 182, 125, 0.3);
+    transform: rotateY(180deg);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.flashcard__term {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    text-align: center;
+    word-break: break-word;
+}
+
+.flashcard__definition {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    word-break: break-word;
+}
+
+.flashcard__instruction {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    text-align: center;
+    font-style: italic;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.35rem 1rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(4px);
+}
+
+.flashcard:hover .flashcard__instruction {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Focus state for accessibility */
+.flashcard:focus {
+    outline: none;
+}
+
+.flashcard:focus .flashcard__front,
+.flashcard:focus .flashcard__back {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.4);
+}
+
+/* Hover glow effect */
+.flashcard:hover .flashcard__front {
+    border-color: rgba(127, 90, 240, 0.5);
+}
+
+.flashcard--flipped:hover .flashcard__back {
+    border-color: rgba(44, 182, 125, 0.5);
+}
