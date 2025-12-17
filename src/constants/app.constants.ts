@@ -31,8 +31,7 @@ Merhaba: Hello
 Hoşçakal: Goodbye
 `.trim();
 
-/** Gemini model adı */
-export const GEMINI_MODEL = 'gemini-3-flash-preview';
+
 
 /** Hata mesajları */
 export const ERROR_MESSAGES = {

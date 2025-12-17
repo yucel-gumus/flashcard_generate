@@ -43,11 +43,18 @@ cd flashcard-generator
 npm install
 
 # Ortam değişkenlerini ayarlayın
-echo "GEMINI_API_KEY=your_api_key_here" > .env.local
+echo "VITE_API_URL=http://localhost:8000/api/generate" > .env
 
 # Geliştirme sunucusunu başlatın
 npm run dev
 ```
+
+### Backend Kurulumu
+
+Bu proje bir backend servisine ihtiyaç duyar. Backend kodlarını [buradan](https://github.com/yucel-gumus/llm_api) indirip çalıştırabilirsiniz.
+
+1. Backend projesini çalıştırın (Port 8000)
+2. Frontend `.env` dosyasında `VITE_API_URL` ayarını yapın
 
 ### API Anahtarı Alma
 

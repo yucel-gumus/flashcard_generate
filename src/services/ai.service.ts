@@ -2,13 +2,13 @@
  * @fileoverview Gemini AI servisi
  */
 
-import { GoogleGenAI } from '@google/genai';
 import type { Flashcard, GenerateFlashcardsParams } from '../types/flashcard.types';
-import { AI_PROMPT_TEMPLATE, GEMINI_MODEL, ERROR_MESSAGES } from '../constants/app.constants';
+import { AI_PROMPT_TEMPLATE, ERROR_MESSAGES } from '../constants/app.constants';
 import { parseFlashcardsFromText } from '../utils/parser.utils';
 
-/** Gemini AI istemcisi */
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as string });
+// Backend URL'i - Geliştirme ortamı için localhost
+// Backend URL'i - Environment variable varsa onu kullan, yoksa localhost (dev)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/generate';
 
 /**
  * Belirtilen konu için AI destekli flashcard'lar oluşturur
@@ -16,11 +16,6 @@ const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as stri
  * @param params - Flashcard oluşturma parametreleri
  * @returns Oluşturulan flashcard listesi
  * @throws API hatası durumunda hata fırlatır
- * 
- * @example
- * ```typescript
- * const cards = await generateFlashcards({ topic: 'JavaScript' });
- * ```
  */
 export async function generateFlashcards(params: GenerateFlashcardsParams): Promise<Flashcard[]> {
     const { topic } = params;
@@ -32,12 +27,21 @@ export async function generateFlashcards(params: GenerateFlashcardsParams): Prom
     const prompt = AI_PROMPT_TEMPLATE(topic);
 
     try {
-        const result = await ai.models.generateContent({
-            model: GEMINI_MODEL,
-            contents: prompt,
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt }),
         });
 
-        const responseText = result?.text ?? '';
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.detail || `API Error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const responseText = data.text;
 
         if (!responseText) {
             throw new Error(ERROR_MESSAGES.EMPTY_RESPONSE);
