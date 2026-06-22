@@ -6,9 +6,10 @@ import type { Flashcard, GenerateFlashcardsParams } from '../types/flashcard.typ
 import { AI_PROMPT_TEMPLATE, ERROR_MESSAGES } from '../constants/app.constants';
 import { parseFlashcardsFromText } from '../utils/parser.utils';
 
-// Backend URL'i - Geliştirme ortamı için localhost
-// Backend URL'i - Environment variable varsa onu kullan, yoksa localhost (dev)
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/generate';
+const apiUrl = (): string => {
+  const base = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/, '');
+  return base ? `${base}/api/generate` : '/api/generate';
+};
 
 /**
  * Belirtilen konu için AI destekli flashcard'lar oluşturur
@@ -27,7 +28,7 @@ export async function generateFlashcards(params: GenerateFlashcardsParams): Prom
     const prompt = AI_PROMPT_TEMPLATE(topic);
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(apiUrl(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
