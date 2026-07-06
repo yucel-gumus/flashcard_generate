@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  const gatewayTarget = (env.AI_API_URL || env.GEMINI_GATEWAY_URL || 'https://api.yucelgumus.dev').replace(
+  const gatewayTarget = (env.AI_API_URL || env.GEMINI_GATEWAY_URL || 'https://python-backend-270384591051.europe-west3.run.app').replace(
     /\/$/,
     ''
   );
