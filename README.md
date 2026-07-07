@@ -1,124 +1,90 @@
-# 🎯 Flashcard Generator (Bilgi Kartı Oluşturucu)
+# 🎯 Bilgi Kartı Oluşturucu (AI-Powered Flashcard Generator)
 
-Modern, hızlı ve kullanıcı dostu bir AI destekli bilgi kartı oluşturucu. Google Gemini 2.0 Flash modelini kullanarak, herhangi bir konu hakkında saniyeler içinde eğitici ve öğretici bilgi kartları üretir.
+Bilgi Kartı Oluşturucu; kullanıcıların istedikleri herhangi bir eğitim konusu veya ders başlığı hakkında saniyeler içinde zengin ve öğretici bilgi kartları (flashcards) üretmesini sağlayan, **React 19 & Vite 6 & TypeScript** tabanlı modern bir web uygulamasıdır. 
 
-![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)
-![React](https://img.shields.io/badge/React-19.0+-61DAFB.svg)
-![Vite](https://img.shields.io/badge/Vite-6.0+-646CFF.svg)
+Uygulamanın yapay zeka entegrasyonu, Google Gemini'ın **Structured Output (Yapılandırılmış Çıktı)** yeteneğini kullanarak veri tutarlılığını garanti altına alır.
 
-## ✨ Özellikler
+---
 
-- 🤖 **Gemini AI Entegrasyonu**: Google'ın en yeni ve en hızlı AI modeli (Gemini 2.0 Flash) ile güçlendirilmiştir.
-- ⚡ **Anında Oluşturma**: Sadece konu başlığı girerek saniyeler içinde setler oluşturun.
-- 🎨 **Modern UI/UX**: Glassmorphism etkileri, akıcı animasyonlar ve responsive tasarım.
-- 📱 **Mobil Uyumlu**: Tüm cihazlarda (masaüstü, tablet, telefon) kusursuz deneyim.
-- 🔄 **İnteraktif Kartlar**: 3D çevirme efektleri ve sesli geri bildirimler.
-- 💾 **Dışa Aktarma**: Kart setlerinizi JSON formatında kaydedin ve paylaşın.
-- ⌨️ **Klavye Kısayolları**: Verimlilik için optimize edilmiş kontroller.
-- 🇹🇷 **Türkçe Odaklı**: Türkçe içerik üretimi için özel optimize edilmiştir.
+## 🌟 Öne Çıkan Özellikler
 
-## 🚀 Teknolojiler
+* 🤖 **Gemini AI Structured JSON Çıktısı:**
+  * Yapay zeka, kullanıcının girdiği konuya göre `{ front: string, back: string }` şemasında kesin bir JSON dizisi üretir. Bu sayede veri kesintileri veya parsing hataları önlenir.
+* 🔄 **3D Kart Çevirme Animasyonları:** Kartlar, zengin kullanıcı deneyimi için CSS 3D transform özellikleri (`perspective`, `rotateY`, `backface-visibility`) kullanılarak interaktif bir 3D çevirme animasyonuna sahiptir.
+* 💾 **JSON Dışa Aktarma & Paylaşma:** Oluşturulan bilgi kartı setlerini bilgisayarınıza tek tıkla JSON formatında indirebilir, daha sonra tekrar yükleyebilirsiniz.
+* 🔀 **Akıllı Karıştırma (Shuffle):** Kartların sırasını rastgele değiştirerek öğrenme verimliliğini artıran karıştırma özelliği.
+* ⌨️ **Klavye Kısayolları Kontrolü:** 
+  * `Boşluk (Space)` tuşu ile kartın ön/arka yüzünü çevirme.
+  * `Sağ/Sol Ok` tuşları ile sonraki/önceki karta geçiş.
+  * `Enter` tuşu ile yeni kart seti oluşturma.
+* 📱 **Tam Mobil Uyum:** Responsive tasarım ile telefon, tablet ve bilgisayarlarda tam ekran kart öğrenme deneyimi.
 
-Bu proje, modern web geliştirme standartlarına uygun olarak geliştirilmiştir:
+---
 
-- **Frontend Framework**: React 19
-- **Dil**: TypeScript
-- **Build Tool**: Vite
-- **Styling**: Modern CSS3 (Variables, Flexbox/Grid, Animations)
-- **State Management**: React Hooks (Custom Hooks)
-- **Mimari**: Feature-based Modular Architecture
+## 🏗️ Veri Akışı ve Proxy Altyapısı
 
-## 📦 Kurulum ve Çalıştırma
+İstemci tarafında API anahtarlarını güvenli tutmak için tüm yapay zeka istekleri Vercel Serverless proxy katmanı üzerinden geçirilir:
 
-Bu proje, bir backend servisi ile birlikte çalışacak şekilde tasarlanmıştır.
-
-### Ön Gereksinimler
-
-- Node.js (v18 veya üzeri)
-- NPM veya Yarn
-- [Flashcard Backend](https://github.com/yucel-gumus/llm_api) servisi (veya uyumlu bir API)
-
-### 1. Projeyi Klonlayın
-
-```bash
-git clone https://github.com/yucel-gumus/flashcard-generate.git
-cd flashcard-generate
+```
+[ İstemci (React + CSS 3D) ] ──(POST /api/generate)──► [ Vercel Serverless (api/generate.ts) ]
+                                                                   │
+                                                         (X-API-Key Yetkilendirme)
+                                                                   ▼
+[ Gemini 3.5 Flash ] ◄──(Structured JSON [Front/Back])─── [ Python Gateway (api.yucelgumus.dev) ]
 ```
 
-### 2. Bağımlılıkları Yükleyin
+---
 
+## 📂 Proje Klasör Yapısı
+
+```
+flashcard_generate/
+├── src/
+│   ├── components/       # CardGrid, Flashcard, TopicInput, Header, Layout bileşenleri
+│   ├── services/         # API (Gateway) bağlantı servisi
+│   ├── hooks/            # Custom React hook'ları (klavye dinleyicileri, set yönetimi)
+│   ├── styles/           # 3D kart çevirme efektleri ve glassmorphism CSS stilleri
+│   ├── types/            # TypeScript kart ve API tip tanımları
+│   ├── App.tsx           # Ana React uygulama bileşeni ve durum yönetimi
+│   └── main.tsx
+├── api/
+│   └── generate.ts       # Vercel Serverless Gateway Proxy
+├── tsconfig.json
+├── vite.config.ts        # Dev proxy yapılandırması
+└── package.json
+```
+
+---
+
+## 🚀 Kurulum ve Yerel Çalıştırma
+
+### 1. Bağımlılıkları Yükleyin
 ```bash
+git clone https://github.com/yucel-gumus/flashcard_generate.git
+cd flashcard_generate
 npm install
 ```
 
-### 3. Çevre Değişkenlerini Ayarlayın
-
-Proje kök dizininde `.env` dosyası oluşturun (veya `.env.local`) ve backend adresinizi tanımlayın:
+### 2. Ortam Değişkenleri (`.env`)
+Proje kök dizininde `.env` dosyası oluşturun ve geçit adreslerini tanımlayın:
 
 ```env
-# Backend API adresiniz (Varsayılan olarak localhost:8000 kabul edilir)
-VITE_API_URL=http://localhost:8000/api/generate
+# Sunucu Tarafı (Vercel Serverless / Local API için)
+AI_API_URL=https://api.yucelgumus.dev
+GATEWAY_CLIENT_API_KEY=your_client_api_key
+
+# İstemci Tarafı (Boş bırakılırsa same-origin /api/generate kullanılır)
+VITE_API_URL=
 ```
 
-> **Not:** Backend servisi, Google Gemini API anahtarını yönetir. Frontend tarafında API anahtarı **saklanmaz**.
-
-### 4. Geliştirme Sunucusunu Başlatın
-
+### 3. Geliştirme Sunucusunu Başlatma
 ```bash
 npm run dev
 ```
+Uygulama `http://localhost:5173` adresinde başlayacaktır.
 
-Tarayıcınızda `http://localhost:5173` adresine giderek uygulamayı kullanmaya başlayabilirsiniz.
+---
 
-## 🏗️ Proje Yapısı
-
-Proje, okunabilirliği ve bakımı kolaylaştırmak için modüler bir yapıda düzenlenmiştir:
-
-```
-flashcard-generate/
-├── src/
-│   ├── components/      # UI bileşenleri (Card, Input, Button vb.)
-│   ├── services/        # API entegrasyon servisleri
-│   ├── hooks/           # Custom React hook'ları
-│   ├── types/           # TypeScript tip tanımları
-│   ├── utils/           # Yardımcı fonksiyonlar
-│   ├── styles/          # Global stiller ve temalar
-│   ├── constants/       # Sabitler ve konfigürasyonlar
-│   ├── App.tsx          # Ana uygulama bileşeni
-│   └── main.tsx         # Giriş noktası
-├── public/              # Statik dosyalar
-├── .env                 # Ortam değişkenleri
-└── package.json         # Proje bağımlılıkları
-```
-
-## 🎮 Kullanım Kılavuzu
-
-1. **Konu Seçimi**: Arama çubuğuna öğrenmek istediğiniz konuyu yazın (örn: "Python Döngüler", "İstanbul Tarihi").
-2. **Oluşturma**: `Enter` tuşuna basın veya "Oluştur" butonuna tıklayın.
-3. **Öğrenme**:
-   - Kartın üzerine tıklayarak (veya `Boşluk` tuşu) ön/arka yüzü çevirin.
-   - Ok tuşları veya butonlar ile kartlar arasında geçiş yapın.
-4. **Yönetim**:
-   - "Karıştır" ile sırayı değiştirin.
-   - "İndir" ile seti cihazınıza kaydedin.
-
-## 🤝 Katkıda Bulunma
-
-Katkılarınızı bekliyoruz! Lütfen şu adımları izleyin:
-
-1. Bu depoyu Fork'layın.
-2. Yeni bir özellik dalı oluşturun (`git checkout -b feature/yeni-ozellik`).
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: Yeni özellik eklendi'`).
-4. Dalınızı Push edin (`git push origin feature/yeni-ozellik`).
-5. Bir Pull Request oluşturun.
-
-## 📄 Lisans
-
-Bu proje [Apache 2.0](LICENSE) lisansı altında lisanslanmıştır.
-
-## 🙏 Teşekkürler
-
-- **Google AI**: Gemini API desteği için.
-- **Open Source**: React, Vite ve TypeScript topluluklarına.
-- **Yücel Gümüş**: Proje geliştiricisi.
+## 🔗 Canlı Bağlantılar
+* **Canlı Demo:** [http://bilgi-kart-olu-turucu.vercel.app/](http://bilgi-kart-olu-turucu.vercel.app/)
+* **API Gateway Kaynak Kodu:** [yucel-gumus/llm_api](https://github.com/yucel-gumus/llm_api)
