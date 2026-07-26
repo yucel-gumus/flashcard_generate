@@ -1,5 +1,5 @@
 /**
- * @fileoverview ProgressBar bileşeni
+ * @fileoverview ProgressBar bileşeni (60-30-10 Design System)
  */
 
 import React from 'react';
@@ -16,11 +16,6 @@ export interface ProgressBarProps {
 
 /**
  * İlerleme çubuğu bileşeni
- * 
- * @example
- * ```tsx
- * <ProgressBar current={5} total={10} />
- * ```
  */
 export const ProgressBar: React.FC<ProgressBarProps> = ({
     current,
@@ -31,10 +26,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
     return (
         <div className="progress-container" role="progressbar" aria-valuenow={current} aria-valuemax={total}>
-            <div className="progress-bar" style={{ width: `${progressPercent}%` }} />
-            <span className="progress-text">
-                {current}/{total} Kart
-            </span>
+            <div className="progress-info">
+                <span className="progress-label">Öğrenme İlerlemesi</span>
+                <span className="progress-text">
+                    {current} / {total} Tamamlandı (%{Math.round(progressPercent)})
+                </span>
+            </div>
+            <div className="progress-bar-wrapper">
+                <div className="progress-bar" style={{ width: `${progressPercent}%` }} />
+            </div>
         </div>
     );
 };

@@ -1,90 +1,119 @@
-/* Button Bileşeni Stilleri */
+/* Button Bileşeni Stilleri - Rich Solid 60-30-10 System */
 
 .button {
-  border: none;
-  border-radius: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1rem 2.25rem;
+    letter-spacing: -0.01em;
+    user-select: none;
 }
 
 .button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-  transform: none !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
-/* Primary Variant */
+.button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Primary Variant - 10% Accent (#9BCEC1 / Solid Punchy) */
 .button--primary {
-  background: linear-gradient(135deg, #7F5AF0 0%, #6B47D7 100%);
-  color: #ffffff;
-  padding: 1rem 2.5rem;
-  min-width: 220px;
-  box-shadow:
-    0 4px 15px rgba(127, 90, 240, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background-color: var(--color-accent-dark);
+    color: #FFFFFF;
+    border: 3px solid var(--color-accent-contrast);
+    box-shadow: 0 6px 20px rgba(63, 126, 113, 0.4);
 }
 
 .button--primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #8B6AF5 0%, #7F5AF0 100%);
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 25px rgba(127, 90, 240, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(63, 126, 113, 0.55);
 }
 
 .button--primary:active:not(:disabled) {
-  transform: translateY(0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(63, 126, 113, 0.4);
 }
 
-/* Secondary Variant */
+/* Secondary Variant - Solid #FFEBD3 Background with Deep #C85846 Border & #7A2417 Text */
 .button--secondary {
-  background: rgba(127, 90, 240, 0.1);
-  color: #7F5AF0;
-  border: 1px solid rgba(127, 90, 240, 0.3);
-  padding: 0.75rem 1.5rem;
-  backdrop-filter: blur(10px);
+    background-color: var(--color-dominant);
+    color: var(--color-secondary-contrast);
+    border: 3px solid var(--color-secondary-dark);
+    box-shadow: 0 4px 16px rgba(122, 36, 23, 0.2);
 }
 
 .button--secondary:hover:not(:disabled) {
-  background: rgba(127, 90, 240, 0.2);
-  border-color: rgba(127, 90, 240, 0.5);
-  color: #8B6AF5;
-  transform: translateY(-1px);
+    background-color: var(--color-dominant-dark);
+    border-color: var(--color-secondary-contrast);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(122, 36, 23, 0.3);
 }
 
-/* Loading State */
-.button--loading .button__text {
-  visibility: hidden;
+.button--secondary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Outline Variant */
+.button--outline {
+    background-color: transparent;
+    color: var(--color-secondary-contrast);
+    border: 3px solid var(--color-secondary-dark);
+}
+
+.button--outline:hover:not(:disabled) {
+    background-color: var(--color-secondary-dark);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+/* Full Width Utility */
+.button--full-width {
+    width: 100%;
+}
+
+/* Loading State Spinner */
+.button--loading .button__text,
+.button--loading .button__icon {
+    visibility: hidden;
+    opacity: 0;
 }
 
 .button--loading::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 22px;
-  height: 22px;
-  margin: -11px 0 0 -11px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top: 2px solid #ffffff;
-  border-radius: 50%;
-  animation: button-spin 0.8s linear infinite;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #FFFFFF;
+    border-radius: 50%;
+    animation: button-spin 0.7s linear infinite;
 }
 
 @keyframes button-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

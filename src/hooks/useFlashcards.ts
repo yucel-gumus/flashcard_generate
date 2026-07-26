@@ -5,7 +5,7 @@
 import { useState, useCallback } from 'react';
 import type { AppState } from '../types/flashcard.types';
 import { generateFlashcards as generateFlashcardsService } from '../services/ai.service';
-import { downloadFlashcardsAsJson } from '../utils/file.utils';
+import { downloadFlashcardsAsPdf } from '../utils/pdf.utils';
 import { ANIMATION_TIMING, SUCCESS_MESSAGES } from '../constants/app.constants';
 
 /** Hook'un başlangıç durumu */
@@ -146,13 +146,19 @@ export function useFlashcards() {
     }, []);
 
     /**
-     * Kartları JSON olarak indirir
+     * Kartları PDF olarak doğrudan indirir
      */
-    const saveCards = useCallback((): void => {
+    const saveCards = useCallback(async (topic?: string): Promise<void> => {
         if (state.flashcards.length > 0) {
-            downloadFlashcardsAsJson(state.flashcards);
+            try {
+                await downloadFlashcardsAsPdf(state.flashcards, topic || 'Bilgi Kartları');
+                setSuccess('Kart seti PDF olarak bilgisayarınıza indirildi! 📄');
+                setTimeout(clearMessages, ANIMATION_TIMING.INSTRUCTION_DURATION);
+            } catch (err) {
+                setError('PDF oluşturulurken bir hata oluştu.');
+            }
         }
-    }, [state.flashcards]);
+    }, [state.flashcards, setSuccess, setError, clearMessages]);
 
     /**
      * Tüm state'i sıfırlar

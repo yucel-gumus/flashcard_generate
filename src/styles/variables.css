@@ -1,51 +1,46 @@
-/* CSS Değişkenleri (Design Tokens) */
+/* CSS Değişkenleri (Design Tokens) - Rich Solid 60-30-10 Palette */
+/* Dominant (60%): #FFEBD3 | Secondary (30%): #FFB6A6 | Accent (10%): #9BCEC1 */
 
 :root {
-    /* Primary Colors */
-    --primary: #7F5AF0;
-    --primary-hover: #6B47D7;
+    /* 60% - Dominant Background & Base Surface */
+    --color-dominant: #FFEBD3;
+    --color-dominant-dark: #F5DAB8;
+    
+    /* 30% - Secondary Card Structure, Header & Surface Elevation (Rich & Deep) */
+    --color-secondary: #FFB6A6;
+    --color-secondary-hover: #F09886;
+    --color-secondary-dark: #C85846; /* Deep rich contrast text/border tone */
+    --color-secondary-contrast: #7A2417; /* High contrast text on dominant background */
 
-    /* Background Colors */
-    --bg: #16161A;
-    --surface: #242629;
-    --surface-light: #ffffff;
-    --surface-dark: #1e1e1e;
+    /* 10% - Accent Interactive CTA, Progress & Active States (Rich & Punchy) */
+    --color-accent: #9BCEC1;
+    --color-accent-hover: #7EBBB0;
+    --color-accent-dark: #3F7E71; /* Deep accent tone for solid borders & text */
+    --color-accent-contrast: #1E4D43; /* Deep contrast tone */
 
-    /* Button Colors */
-    --button: #7F5AF0;
+    /* Semantic Mappings strictly solid & opaque */
+    --bg-main: var(--color-dominant);
+    --surface-card: var(--color-secondary);
+    --surface-card-back: var(--color-accent);
+    --surface-input: var(--color-dominant);
 
-    /* Text Colors */
-    --headline: #FFFFFE;
-    --text: #94A1B2;
-    --text-light: #1f2937;
-    --text-dark: #e5e7eb;
+    /* Solid High-Contrast Text Tokens (No washed out transparency!) */
+    --text-primary: var(--color-secondary-contrast);
+    --text-on-secondary: #FFFFFF;
+    --text-on-accent: #FFFFFF;
+    --text-muted: var(--color-secondary-dark);
 
-    /* Border Colors */
-    --stroke: #010101;
+    /* Solid Borders & Focus Tokens */
+    --border-solid: var(--color-secondary-dark);
+    --border-accent: var(--color-accent-dark);
+    --focus-ring: var(--color-accent);
 
-    /* Accent Colors */
-    --highlight: #7F5AF0;
-    --secondary: #72757E;
-    --tertiary: #2CB67D;
-    --accent-light: #3b82f6;
-    --accent-dark: #60a5fa;
+    /* Deep Crisp Shadows */
+    --shadow-soft: 0 10px 25px -4px rgba(122, 36, 23, 0.18);
+    --shadow-hover: 0 16px 36px -6px rgba(30, 77, 67, 0.28);
+    --shadow-card: 0 12px 28px -6px rgba(122, 36, 23, 0.22);
 
-    /* Error Colors */
-    --error-light: #ef4444;
-    --error-dark: #f87171;
-
-    /* Gray Scale */
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-800: #1f2937;
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-
-    /* Spacing */
+    /* Spacing Scale */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -53,14 +48,14 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
 
-    /* Border Radius */
-    --radius-sm: 0.5rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
+    /* Border Radius Scale */
+    --radius-sm: 0.625rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
     --radius-full: 9999px;
 
-    /* Transitions */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transitions & Motion */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }

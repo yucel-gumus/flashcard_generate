@@ -1,5 +1,5 @@
 /**
- * @fileoverview Yeniden kullanılabilir Button bileşeni
+ * @fileoverview Yeniden kullanılabilir Button bileşeni (60-30-10 Design System)
  */
 
 import React from 'react';
@@ -11,7 +11,11 @@ export interface ButtonProps {
     /** Tıklama olayı */
     onClick?: () => void;
     /** Buton varyantı */
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'outline';
+    /** Opsiyonel SVG İkon */
+    icon?: React.ReactNode;
+    /** Tam genişlik kaplama */
+    fullWidth?: boolean;
     /** Devre dışı durumu */
     disabled?: boolean;
     /** Yükleniyor durumu */
@@ -24,18 +28,13 @@ export interface ButtonProps {
 
 /**
  * Yeniden kullanılabilir Button bileşeni
- * 
- * @example
- * ```tsx
- * <Button variant="primary" onClick={handleClick}>
- *   Oluştur
- * </Button>
- * ```
  */
 export const Button: React.FC<ButtonProps> = ({
     children,
     onClick,
     variant = 'primary',
+    icon,
+    fullWidth = false,
     disabled = false,
     loading = false,
     className = '',
@@ -44,6 +43,7 @@ export const Button: React.FC<ButtonProps> = ({
     const buttonClass = [
         'button',
         `button--${variant}`,
+        fullWidth ? 'button--full-width' : '',
         loading ? 'button--loading' : '',
         className,
     ]
@@ -58,6 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
             disabled={disabled || loading}
             aria-busy={loading}
         >
+            {icon && <span className="button__icon">{icon}</span>}
             <span className="button__text">{children}</span>
         </button>
     );

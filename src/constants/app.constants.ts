@@ -43,6 +43,6 @@ export const ERROR_MESSAGES = {
 
 /** Başarı mesajları */
 export const SUCCESS_MESSAGES = {
-    GENERATING: 'Flash kartlar oluşturuluyor...',
+    GENERATING: 'Kensai Bilgi Kartlarını Oluşturuyor...',
     TIP: '💡 İpucu: Kartlara tıklayarak cevapları görebilirsiniz!',
 } as const;
