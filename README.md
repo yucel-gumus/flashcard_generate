@@ -1,90 +1,124 @@
-# 🎯 Bilgi Kartı Oluşturucu (AI-Powered Flashcard Generator)
+# 🗂️ Flashcard Generate - AI-Powered Learning & Smart Flashcard Studio
 
-Bilgi Kartı Oluşturucu; kullanıcıların istedikleri herhangi bir eğitim konusu veya ders başlığı hakkında saniyeler içinde zengin ve öğretici bilgi kartları (flashcards) üretmesini sağlayan, **React 19 & Vite 6 & TypeScript** tabanlı modern bir web uygulamasıdır. 
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Google Gemini](https://img.shields.io/badge/Google_Gemini-Flashcards_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-yucelgumus.dev-2563EB?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.yucelgumus.dev/)
 
-Uygulamanın yapay zeka entegrasyonu, Google Gemini'ın **Structured Output (Yapılandırılmış Çıktı)** yeteneğini kullanarak veri tutarlılığını garanti altına alır.
+> Herhangi bir konudan, metinden veya PDF dokümanından **Google Gemini AI** kullanarak otomatik olarak soru-cevap bilgi kartları (flashcards) üreten, 3D kart çevirme animasyonları, sesli okuma ve öğrenme takip sistemi sunan interaktif çalışma platformu.
 
 ---
 
 ## 🌟 Öne Çıkan Özellikler
 
-* 🤖 **Gemini AI Structured JSON Çıktısı:**
-  * Yapay zeka, kullanıcının girdiği konuya göre `{ front: string, back: string }` şemasında kesin bir JSON dizisi üretir. Bu sayede veri kesintileri veya parsing hataları önlenir.
-* 🔄 **3D Kart Çevirme Animasyonları:** Kartlar, zengin kullanıcı deneyimi için CSS 3D transform özellikleri (`perspective`, `rotateY`, `backface-visibility`) kullanılarak interaktif bir 3D çevirme animasyonuna sahiptir.
-* 💾 **JSON Dışa Aktarma & Paylaşma:** Oluşturulan bilgi kartı setlerini bilgisayarınıza tek tıkla JSON formatında indirebilir, daha sonra tekrar yükleyebilirsiniz.
-* 🔀 **Akıllı Karıştırma (Shuffle):** Kartların sırasını rastgele değiştirerek öğrenme verimliliğini artıran karıştırma özelliği.
-* ⌨️ **Klavye Kısayolları Kontrolü:** 
-  * `Boşluk (Space)` tuşu ile kartın ön/arka yüzünü çevirme.
-  * `Sağ/Sol Ok` tuşları ile sonraki/önceki karta geçiş.
-  * `Enter` tuşu ile yeni kart seti oluşturma.
-* 📱 **Tam Mobil Uyum:** Responsive tasarım ile telefon, tablet ve bilgisayarlarda tam ekran kart öğrenme deneyimi.
+- 🤖 **Yapay Zeka ile Otomatik Kart Üretimi:** Konu başlığı, özel notlar veya PDF yüklemesi üzerinden zorluk derecesine göre optimize edilmiş soru-cevap çiftleri üretir.
+- 🔄 **3D Kart Çevirme (Flip Animation):** Gerçekçi 3D CSS efektleriyle soru ve cevap arasında pürüzsüz geçiş.
+- 📊 **Öğrenme İlerleme Çubuğu (Progress Tracking):** *"Öğrenildi"*, *"Tekrar Edilecek"* işaretlemeleri ile çalışma oturumunun tamamlanma oranını anlık takip etme.
+- 🔊 **Sesli Telaffuz & TTS Desteği (`useAudio`):** Yabancı dil veya kavram kartları için metin okuma desteği.
+- 💾 **Yerel Hafıza (LocalStorage):** Oluşturulan kart setlerini tarayıcıda kalıcı olarak saklama ve tekrar çalışma imkanı.
 
 ---
 
-## 🏗️ Veri Akışı ve Proxy Altyapısı
+## 🏗️ Mimari & Modül Yapısı
 
-İstemci tarafında API anahtarlarını güvenli tutmak için tüm yapay zeka istekleri Vercel Serverless proxy katmanı üzerinden geçirilir:
+```mermaid
+graph LR
+    Input[Konu Başlığı / Not / PDF] --> Parser[PDF & Text Parser]
+    Parser --> AIService[Gemini Flashcard Generator]
+    AIService --> CardsStore[Flashcard State Hook]
+    CardsStore --> Grid[Interactive Flashcard Grid]
+    Grid --> FlipCard[3D Flip Card Component]
+    Grid --> Progress[Progress Bar & Study Stats]
+    Grid --> Audio[TTS & Audio Pronunciation]
+```
 
-```
-[ İstemci (React + CSS 3D) ] ──(POST /api/generate)──► [ Vercel Serverless (api/generate.ts) ]
-                                                                   │
-                                                         (X-API-Key Yetkilendirme)
-                                                                   ▼
-[ Gemini 3.5 Flash ] ◄──(Structured JSON [Front/Back])─── [ Python Gateway (api.yucelgumus.dev) ]
-```
+| Modül | Açıklama |
+| :--- | :--- |
+| **`src/services/ai.service.ts`** | Gemini AI ile yapılandırılmış JSON flashcard üretimi |
+| **`src/hooks/useFlashcards.ts`** | Kart durumları, filtreleme ve LocalStorage senkronizasyonu |
+| **`src/hooks/useAudio.ts`** | Web Speech API / TTS sesli okuma kancası |
+| **`src/components/Flashcard/`** | 3D döndürülebilir kart görsel bileşeni |
 
 ---
 
-## 📂 Proje Klasör Yapısı
+## 🚀 Hızlı Başlangıç
 
-```
-flashcard_generate/
-├── src/
-│   ├── components/       # CardGrid, Flashcard, TopicInput, Header, Layout bileşenleri
-│   ├── services/         # API (Gateway) bağlantı servisi
-│   ├── hooks/            # Custom React hook'ları (klavye dinleyicileri, set yönetimi)
-│   ├── styles/           # 3D kart çevirme efektleri ve glassmorphism CSS stilleri
-│   ├── types/            # TypeScript kart ve API tip tanımları
-│   ├── App.tsx           # Ana React uygulama bileşeni ve durum yönetimi
-│   └── main.tsx
-├── api/
-│   └── generate.ts       # Vercel Serverless Gateway Proxy
-├── tsconfig.json
-├── vite.config.ts        # Dev proxy yapılandırması
-└── package.json
-```
+### Gereksinimler
+- **Node.js**: v18.0 veya üzeri
+- **Google Gemini API Key**
 
----
+### Kurulum
 
-## 🚀 Kurulum ve Yerel Çalıştırma
-
-### 1. Bağımlılıkları Yükleyin
 ```bash
+# Depoyu klonlayın
 git clone https://github.com/yucel-gumus/flashcard_generate.git
 cd flashcard_generate
+
+# Paketleri yükleyin
 npm install
 ```
 
-### 2. Ortam Değişkenleri (`.env`)
-Proje kök dizininde `.env` dosyası oluşturun ve geçit adreslerini tanımlayın:
+### Ortam Değişkenleri (`.env`)
 
 ```env
-# Sunucu Tarafı (Vercel Serverless / Local API için)
-AI_API_URL=https://api.yucelgumus.dev
-GATEWAY_CLIENT_API_KEY=your_client_api_key
-
-# İstemci Tarafı (Boş bırakılırsa same-origin /api/generate kullanılır)
-VITE_API_URL=
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-### 3. Geliştirme Sunucusunu Başlatma
+### Başlatma
+
 ```bash
 npm run dev
 ```
-Uygulama `http://localhost:5173` adresinde başlayacaktır.
+
+Tarayıcınızda `http://localhost:5173` adresine giderek kart setleri oluşturmaya başlayabilirsiniz.
 
 ---
 
-## 🔗 Canlı Bağlantılar
-* **Canlı Demo:** [http://bilgi-kart-olu-turucu.vercel.app/](http://bilgi-kart-olu-turucu.vercel.app/)
-* **API Gateway Kaynak Kodu:** [yucel-gumus/llm_api](https://github.com/yucel-gumus/llm_api)
+## 📂 Proje Dizin Yapısı
+
+```
+flashcard_generate/
+├── api/
+│   └── generate.ts                 # Serverless kart üretim API
+├── index.html
+├── package.json
+├── vite.config.ts
+└── src/
+    ├── main.tsx
+    ├── App.tsx
+    ├── types/flashcard.types.ts    # Kart ve oturum tipleri
+    ├── utils/
+    │   ├── pdf.utils.ts            # PDF metin çıkarıcı
+    │   └── parser.utils.ts         # JSON & metin temizleme
+    ├── hooks/
+    │   ├── useFlashcards.ts        # Kart yönetimi
+    │   └── useAudio.ts             # Ses entegrasyonu
+    ├── services/
+    │   └── ai.service.ts           # Gemini prompt mühendisliği
+    └── components/
+        ├── Flashcard/              # 3D Flip Card
+        ├── FlashcardGrid/          # Kart ızgarası
+        └── ProgressBar/            # İlerleme çubuğu
+```
+
+---
+
+## 📄 Lisans
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
+
+---
+
+## 👨‍💻 Geliştirici & İletişim
+
+**Yücel Gümüş** - Full Stack Developer
+
+- 🌐 **Web Sitesi / Portfolyo:** [yucelgumus.dev](https://www.yucelgumus.dev/)
+- 💼 **LinkedIn:** [linkedin.com/in/yucel-gumus](https://www.linkedin.com/in/yucel-gumus/)
+- 🐙 **GitHub:** [@yucel-gumus](https://github.com/yucel-gumus)
+
+<p align="left">
+  <a href="https://www.yucelgumus.dev/" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Developed%20by-Yücel%20Gümüş-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Yücel Gümüş Portfolio" />
+  </a>
+</p>
