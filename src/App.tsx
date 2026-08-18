@@ -49,6 +49,17 @@ export const App: React.FC = () => {
         <div className="container">
             {/* App Header */}
             <header className="app-header">
+                <a
+                    href="https://www.yucelgumus.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="app-header__dev-badge"
+                    aria-label="Geliştirici: Yücel Gümüş"
+                >
+                    <span className="dev-badge__dot" />
+                    <span>Geliştirici: Yücel Gümüş</span>
+                </a>
+
                 <h1 className="app-header__title">
                     Bilgi Kartı <span>Oluşturucu</span>
                 </h1>
@@ -204,8 +215,18 @@ export const App: React.FC = () => {
                         </div>
                     )}
                 </section>
-                <footer className="w-full py-4 text-center text-xs text-gray-500 border-t border-gray-200/20 mt-8">
-                    <p>Geliştirici: <a href="https://www.yucelgumus.dev/" target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:text-gray-700 transition-colors">Yücel Gümüş</a></p>
+                <footer className="app-footer">
+                    <p>
+                        Tasarlayan & Geliştiren:{' '}
+                        <a
+                            href="https://www.yucelgumus.dev/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="app-footer__link"
+                        >
+                            Yücel Gümüş
+                        </a>
+                    </p>
                 </footer>
             </main>
         </div>
