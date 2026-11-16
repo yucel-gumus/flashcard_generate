@@ -1,44 +1,48 @@
-/* CSS Değişkenleri (Design Tokens) - Rich Solid 60-30-10 Palette */
-/* Dominant (60%): #FFEBD3 | Secondary (30%): #FFB6A6 | Accent (10%): #9BCEC1 */
+/* CSS Değişkenleri (Design Tokens) - İpek Küllü Arduvaz 60-30-10 Palette */
+/* Dominant (60%): #F5F9F5, #EDF3EE, #DBE6DD | Secondary (30%): #DCE3EA, #BCC7D2, #3E5164, #253341 | Accent (10%): #F2A488, #EC7D55, #AB421C */
 
 :root {
-    /* 60% - Dominant Background & Base Surface */
-    --color-dominant: #FFEBD3;
-    --color-dominant-dark: #F5DAB8;
+    /* 60% - Dominant Background & Base Surface (Açık Sis Yeşili) */
+    --color-dominant-light: #F5F9F5;
+    --color-dominant: #EDF3EE;
+    --color-dominant-dark: #DBE6DD;
     
-    /* 30% - Secondary Card Structure, Header & Surface Elevation (Rich & Deep) */
-    --color-secondary: #FFB6A6;
-    --color-secondary-hover: #F09886;
-    --color-secondary-dark: #C85846; /* Deep rich contrast text/border tone */
-    --color-secondary-contrast: #7A2417; /* High contrast text on dominant background */
+    /* 30% - Secondary Card Structure, Header & Surface Elevation (Küllü Arduvaz) */
+    --color-secondary: #DCE3EA;
+    --color-secondary-hover: #DBE6DD;
+    --color-secondary-border: #BCC7D2;
+    --color-secondary-dark: #3E5164;
+    --color-secondary-contrast: #253341;
 
-    /* 10% - Accent Interactive CTA, Progress & Active States (Rich & Punchy) */
-    --color-accent: #9BCEC1;
-    --color-accent-hover: #7EBBB0;
-    --color-accent-dark: #3F7E71; /* Deep accent tone for solid borders & text */
-    --color-accent-contrast: #1E4D43; /* Deep contrast tone */
+    /* 10% - Accent Interactive CTA, Progress & Active States (Kiremit-Mercan) */
+    --color-accent-soft: #F2A488;
+    --color-accent: #EC7D55;
+    --color-accent-hover: #AB421C;
+    --color-accent-dark: #AB421C;
+    --color-accent-contrast: #253341;
 
     /* Semantic Mappings strictly solid & opaque */
     --bg-main: var(--color-dominant);
     --surface-card: var(--color-secondary);
-    --surface-card-back: var(--color-accent);
-    --surface-input: var(--color-dominant);
+    --surface-card-back: var(--color-dominant-dark);
+    --surface-input: var(--color-dominant-light);
 
-    /* Solid High-Contrast Text Tokens (No washed out transparency!) */
+    /* Solid High-Contrast Text Tokens */
     --text-primary: var(--color-secondary-contrast);
-    --text-on-secondary: #FFFFFF;
-    --text-on-accent: #FFFFFF;
+    --text-on-secondary: var(--color-secondary-contrast);
+    --text-on-accent: var(--color-secondary-contrast);
+    --text-on-accent-hover: var(--color-dominant-light);
     --text-muted: var(--color-secondary-dark);
 
     /* Solid Borders & Focus Tokens */
-    --border-solid: var(--color-secondary-dark);
+    --border-solid: var(--color-secondary-border);
     --border-accent: var(--color-accent-dark);
-    --focus-ring: var(--color-accent);
+    --focus-ring: rgba(236, 125, 85, 0.35);
 
     /* Deep Crisp Shadows */
-    --shadow-soft: 0 10px 25px -4px rgba(122, 36, 23, 0.18);
-    --shadow-hover: 0 16px 36px -6px rgba(30, 77, 67, 0.28);
-    --shadow-card: 0 12px 28px -6px rgba(122, 36, 23, 0.22);
+    --shadow-soft: 0 10px 25px -4px rgba(37, 51, 65, 0.12);
+    --shadow-hover: 0 16px 36px -6px rgba(37, 51, 65, 0.2);
+    --shadow-card: 0 12px 28px -6px rgba(37, 51, 65, 0.14);
 
     /* Spacing Scale */
     --spacing-xs: 0.25rem;

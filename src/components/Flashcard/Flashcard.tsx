@@ -41,7 +41,7 @@ export const Flashcard: React.FC<FlashcardProps> = ({
             aria-label={`Kart: ${flashcard.term}. ${isFlipped ? 'Tanım gösteriliyor' : 'Tanımı görmek için tıklayın'}`}
         >
             <div className="flashcard__inner">
-                {/* Ön Yüz (Soru) - Secondary #FFB6A6 */}
+                {/* Ön Yüz (Soru) - Secondary Küllü Arduvaz */}
                 <div className="flashcard__front">
                     <span className="flashcard__tag">Soru</span>
                     <div className="flashcard__content">
@@ -55,7 +55,7 @@ export const Flashcard: React.FC<FlashcardProps> = ({
                     </div>
                 </div>
 
-                {/* Arka Yüz (Cevap) - Accent #9BCEC1 */}
+                {/* Arka Yüz (Cevap) - Dominant Açık Sis Yeşili */}
                 <div className="flashcard__back">
                     <span className="flashcard__tag">Cevap</span>
                     <div className="flashcard__content">

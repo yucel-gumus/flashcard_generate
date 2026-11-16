@@ -31,39 +31,40 @@
     justify-content: center;
 }
 
-/* Primary Variant - 10% Accent (#9BCEC1 / Solid Punchy) */
+/* Primary Variant - 10% Accent (Kiremit-Mercan) */
 .button--primary {
-    background-color: var(--color-accent-dark);
-    color: #FFFFFF;
-    border: 3px solid var(--color-accent-contrast);
-    box-shadow: 0 6px 20px rgba(63, 126, 113, 0.4);
+    background-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+    border: 3px solid var(--color-accent-dark);
+    box-shadow: 0 6px 20px rgba(236, 125, 85, 0.35);
 }
 
 .button--primary:hover:not(:disabled) {
-    background-color: var(--color-accent);
-    color: var(--color-accent-contrast);
+    background-color: var(--color-accent-hover);
+    color: var(--text-on-accent-hover);
+    border-color: var(--color-secondary-contrast);
     transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(63, 126, 113, 0.55);
+    box-shadow: 0 10px 28px rgba(171, 66, 28, 0.35);
 }
 
 .button--primary:active:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(63, 126, 113, 0.4);
+    box-shadow: 0 4px 14px rgba(171, 66, 28, 0.3);
 }
 
-/* Secondary Variant - Solid #FFEBD3 Background with Deep #C85846 Border & #7A2417 Text */
+/* Secondary Variant - Dominant Silk Green with Slate Border & Primary Slate Text */
 .button--secondary {
-    background-color: var(--color-dominant);
+    background-color: var(--color-dominant-light);
     color: var(--color-secondary-contrast);
-    border: 3px solid var(--color-secondary-dark);
-    box-shadow: 0 4px 16px rgba(122, 36, 23, 0.2);
+    border: 3px solid var(--color-secondary-border);
+    box-shadow: 0 4px 16px rgba(37, 51, 65, 0.12);
 }
 
 .button--secondary:hover:not(:disabled) {
     background-color: var(--color-dominant-dark);
-    border-color: var(--color-secondary-contrast);
+    border-color: var(--color-secondary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(122, 36, 23, 0.3);
+    box-shadow: 0 8px 22px rgba(37, 51, 65, 0.18);
 }
 
 .button--secondary:active:not(:disabled) {
@@ -78,8 +79,8 @@
 }
 
 .button--outline:hover:not(:disabled) {
-    background-color: var(--color-secondary-dark);
-    color: #FFFFFF;
+    background-color: var(--color-secondary-contrast);
+    color: var(--color-dominant-light);
     transform: translateY(-2px);
 }
 
@@ -103,8 +104,8 @@
     width: 24px;
     height: 24px;
     margin: -12px 0 0 -12px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-top: 3px solid #FFFFFF;
+    border: 3px solid rgba(37, 51, 65, 0.25);
+    border-top: 3px solid var(--color-accent-contrast);
     border-radius: 50%;
     animation: button-spin 0.7s linear infinite;
 }
