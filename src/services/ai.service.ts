@@ -39,7 +39,7 @@ export async function generateFlashcards(params: GenerateFlashcardsParams): Prom
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
             if (response.status === 401 || response.status === 403) {
-                throw new Error(`API Yetkilendirme Hatası (${response.status} ${response.statusText}): .env dosyasındaki GATEWAY_CLIENT_API_KEY geçersiz veya yetkisiz.`);
+                throw new Error('API yetkilendirme hatası oluştu. Lütfen daha sonra tekrar deneyin.');
             }
             throw new Error(errorData.detail || `API Hatası: ${response.statusText}`);
         }
